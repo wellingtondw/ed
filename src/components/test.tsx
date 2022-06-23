@@ -5,6 +5,6 @@ describe('<Example />', () => {
   it('should be able to render correctly', () => {
     render(<Example />);
 
-    expect(screen.getByText(/exemplo/i)).toBeInTheDocument;
+    expect(screen.getByText(/somente/i)).toBeInTheDocument();
   });
 });

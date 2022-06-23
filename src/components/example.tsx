@@ -1,3 +1,3 @@
 export const Example = () => {
-  return <h1>Exemplo</h1>;
+  return <h1>Somente um teste para o CI</h1>;
 };
