@@ -1,5 +1,5 @@
-export const Home = () => {
-  console.log(process.env.ENDPOINT_URL);
+import * as S from './styles';
 
-  return <h1>Hello World</h1>;
+export const Home = () => {
+  return <S.Title>Hello World</S.Title>;
 };
