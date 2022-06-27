@@ -11,7 +11,7 @@
     "lint": "eslint",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --passWithNoTests --no-cache --runInBand",
-    "test:watch": "npm test -- --watch",
+    "test:watch": "npm test -- --watch --onlyChanged",
     "test:staged": "npm test -- --onlyChanged",
     "test:ci": "npm test -- --coverage --runInBand"
   },
