@@ -3,11 +3,10 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.primary};
-  `}
-`;
+    padding: ${theme.spacings.xsmall} 0;
 
-export const Container = styled.div`
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 16px;
+    > div {
+      max-width: 600px;
+    }
+  `}
 `;
