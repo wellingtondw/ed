@@ -5,7 +5,12 @@ import { MovieCard } from '.';
 import movieMock from './mock';
 
 const { poster_path, title, release_date, vote_average, id } = movieMock;
-const sut = (href = '') => {
+
+type SutProps = {
+  href?: string;
+  loading?: boolean;
+};
+const sut = ({ href = '/', loading = false }: SutProps) => {
   return render(
     <MovieCard
       posterImage={poster_path}
@@ -13,13 +18,14 @@ const sut = (href = '') => {
       rating={vote_average}
       date={release_date}
       href={href}
+      loading={loading}
     />
   );
 };
 
 describe('<MovieCard>', () => {
   it('should be able to render correctly', () => {
-    const { container } = sut();
+    const { container } = sut({});
 
     const year = getFullYear({ date: release_date });
 
@@ -32,10 +38,17 @@ describe('<MovieCard>', () => {
 
   it('should be able to redirect', () => {
     const href = `/${id}`;
-    sut(href);
+    sut({ href });
 
     const movieCardEl = screen.getByRole('link');
 
     expect(movieCardEl).toHaveAttribute('href', href);
+  });
+
+  it('should be able to render skeleton if loading is true', () => {
+    sut({ loading: true });
+
+    expect(screen.getByTestId('skeleton')).toBeInTheDocument();
+    expect(screen.queryByText(title)).not.toBeInTheDocument();
   });
 });

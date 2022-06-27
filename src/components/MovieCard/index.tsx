@@ -1,6 +1,8 @@
-import { Star } from '@styled-icons/material';
 import { AnchorHTMLAttributes } from 'react';
+import { Star } from '@styled-icons/material';
+
 import { getFullYear } from '../../utils/date';
+import { Skeleton } from './Skeleton';
 
 import * as S from './styles';
 
@@ -9,9 +11,21 @@ export type MovieCardProps = {
   title: string;
   rating: number;
   date: string;
+  loading?: boolean;
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export const MovieCard = ({ posterImage, title, rating, date, ...props }: MovieCardProps) => {
+export const MovieCard = ({
+  posterImage,
+  title,
+  rating,
+  date,
+  loading = false,
+  ...props
+}: MovieCardProps) => {
+  if (loading) {
+    return <Skeleton />;
+  }
+
   return (
     <S.Wrapper {...props}>
       <S.PosterWrapper>

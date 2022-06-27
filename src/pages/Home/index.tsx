@@ -12,6 +12,7 @@ export const Home = () => {
         title={title}
         rating={vote_average}
         date={release_date}
+        loading
       />
     </>
   );
