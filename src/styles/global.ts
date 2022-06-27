@@ -1,9 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
-import theme from './theme';
 
-type GlobalStylesProps = typeof theme;
-
-const GlobalStyles = createGlobalStyle<{ theme: GlobalStylesProps }>`
+const GlobalStyles = createGlobalStyle`
   @font-face {
     font-family: 'Open Sans';
     font-style: normal;

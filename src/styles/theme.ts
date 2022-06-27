@@ -25,10 +25,13 @@ export default {
     }
   },
   colors: {
-    primary: '#FFBA08',
-    white: '#F5F8FA',
-    black: '#000000',
-    grey: '#47585B'
+    primary: '#835AFD',
+    white: '#FFFFFF',
+    black: '#29292E',
+    lightGrey: '#DEDEDE',
+    grey: '#A8A8B3',
+    error: '#E73F5D',
+    success: '#57cc99'
   },
   spacings: {
     xxsmall: '0.8rem',
