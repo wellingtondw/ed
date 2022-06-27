@@ -9,9 +9,8 @@ export default {
   font: {
     family:
       "Open Sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
-    light: 300,
     normal: 400,
-    bold: 600,
+    bold: 700,
     sizes: {
       xsmall: '1.2rem',
       small: '1.4rem',
@@ -28,7 +27,7 @@ export default {
     primary: '#835AFD',
     white: '#FFFFFF',
     black: '#29292E',
-    lightGrey: '#DEDEDE',
+    lightGrey: '#EEE',
     grey: '#A8A8B3',
     error: '#E73F5D',
     success: '#57cc99'

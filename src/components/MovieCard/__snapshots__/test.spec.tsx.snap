@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MovieCard> should be able to render correctly 1`] = `
+<div>
+  <a
+    class="sc-bczRLJ cfPoOV"
+    href=""
+  >
+    <div
+      class="sc-gsnTZi icutPt"
+    >
+      <img
+        alt="Doutor Estranho no Multiverso da Loucura"
+        class="sc-dkzDqf jkElQO"
+        src="https://image.tmdb.org/t/p/w500/boIgXXUhw5O3oVkhXsE6SJZkmYo.jpg"
+      />
+    </div>
+    <div
+      class="sc-hKMtZM dglSdK"
+    >
+      <h2
+        class="sc-eCYdqJ hjDbpj"
+      >
+        Doutor Estranho no Multiverso da Loucura
+      </h2>
+      <div
+        class="sc-jSMfEi gKsvVg"
+      >
+        <span
+          class="sc-gKXOVf hgFnUQ"
+        >
+          2022
+        </span>
+        <div
+          class="sc-iBkjds haKhin"
+        >
+          <svg
+            aria-hidden="true"
+            class="StyledIconBase-ea9ulj-0 lbJwfL"
+            fill="currentColor"
+            focusable="false"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+            />
+          </svg>
+          <span>
+            7.5
+          </span>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+`;
