@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> should be able to render correctly 1`] = `
+<div>
+  <div
+    class="sc-ksZaOG dhsSBS"
+  >
+    <div
+      class="sc-kDDrLX bjkhes"
+    >
+      <div
+        class="sc-breuTD dSQBXe"
+      >
+        <div
+          class="sc-iqcoie hdCGA"
+        >
+          <div
+            class="sc-evZas cqGZu"
+          >
+            <svg
+              aria-hidden="true"
+              class="StyledIconBase-ea9ulj-0 lbJwfL"
+              fill="currentColor"
+              focusable="false"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              />
+            </svg>
+          </div>
+          <input
+            class="sc-crXcEl bLUNJU"
+            placeholder="Buscar"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="sc-kDDrLX bjkhes"
+  >
+    <ul
+      class="sc-papXJ gxDyOm"
+    />
+    <div
+      class="sc-hAZoDl heSTbs"
+    >
+      <div
+        class="sc-fnykZs bpPVXe"
+      >
+        <button
+          class="sc-bjUoiL gxzeef"
+        >
+          1
+        </button>
+        <button
+          class="sc-bjUoiL cWHmyb"
+        >
+          2
+        </button>
+        <button
+          class="sc-bjUoiL gxzeef"
+        >
+          3
+        </button>
+        <button
+          class="sc-bjUoiL gxzeef"
+        >
+          4
+        </button>
+        <span
+          class="sc-fEOsli hzwQHm"
+        >
+          . . .
+        </span>
+        <button
+          class="sc-bjUoiL gxzeef"
+        >
+          Infinity
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
