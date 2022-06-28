@@ -1,15 +1,18 @@
+import { LinkProps } from 'react-router-dom';
 import { Star } from '@styled-icons/material';
-import { AnchorHTMLAttributes } from 'react';
+
 import { getFullYear } from '../../utils/date';
 
 import * as S from './styles';
 
-export type MovieCardProps = {
+export type MovieCardDTO = {
   posterImage: string;
   title: string;
   rating: number;
   date: string;
-} & AnchorHTMLAttributes<HTMLAnchorElement>;
+};
+
+export type MovieCardProps = MovieCardDTO & LinkProps;
 
 export const MovieCard = ({ posterImage, title, rating, date, ...props }: MovieCardProps) => {
   return (

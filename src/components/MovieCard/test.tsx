@@ -5,21 +5,26 @@ import { MovieCard } from '.';
 import movieMock from './mock';
 
 const { poster_path, title, release_date, vote_average, id } = movieMock;
-const sut = (href = '') => {
+
+type SutProps = {
+  to?: string;
+  loading?: boolean;
+};
+const sut = ({ to = '/' }: SutProps) => {
   return render(
     <MovieCard
       posterImage={poster_path}
       title={title}
       rating={vote_average}
       date={release_date}
-      href={href}
+      to={to}
     />
   );
 };
 
 describe('<MovieCard>', () => {
   it('should be able to render correctly', () => {
-    const { container } = sut();
+    const { container } = sut({});
 
     const year = getFullYear({ date: release_date });
 
@@ -30,12 +35,12 @@ describe('<MovieCard>', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should be able to redirect', () => {
-    const href = `/${id}`;
-    sut(href);
+  it('should be able to redirect', async () => {
+    const to = `/${id}`;
+    sut({ to });
 
     const movieCardEl = screen.getByRole('link');
 
-    expect(movieCardEl).toHaveAttribute('href', href);
+    expect(movieCardEl).toHaveAttribute('href', to);
   });
 });

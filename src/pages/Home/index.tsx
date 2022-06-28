@@ -1,18 +1,17 @@
+import { MovieCardList } from '../../components/MovieCardList';
 import { Header } from '../../components/Header';
-import { MovieCard } from '../../components/MovieCard';
-import movieMock from '../../components/MovieCard/mock';
+import movieCardListMock from '../../components/MovieCardList/mock';
+import { Container } from '../../components/Container';
+import { formatMoviesList } from '../../utils/movies';
 
 export const Home = () => {
-  const { poster_path, title, release_date, vote_average } = movieMock;
   return (
     <>
       <Header />
-      <MovieCard
-        posterImage={poster_path}
-        title={title}
-        rating={vote_average}
-        date={release_date}
-      />
+
+      <Container style={{ display: 'flex ' }}>
+        <MovieCardList items={formatMoviesList({ items: movieCardListMock })} />
+      </Container>
     </>
   );
 };

@@ -3,8 +3,8 @@
 exports[`<MovieCard> should be able to render correctly 1`] = `
 <div>
   <a
-    class="sc-bczRLJ cfPoOV"
-    href=""
+    class="sc-bczRLJ MaScp"
+    href="/"
   >
     <div
       class="sc-gsnTZi icutPt"
@@ -19,7 +19,7 @@ exports[`<MovieCard> should be able to render correctly 1`] = `
       class="sc-hKMtZM dglSdK"
     >
       <h2
-        class="sc-eCYdqJ hjDbpj"
+        class="sc-eCYdqJ iwHsWs"
       >
         Doutor Estranho no Multiverso da Loucura
       </h2>
@@ -27,7 +27,7 @@ exports[`<MovieCard> should be able to render correctly 1`] = `
         class="sc-jSMfEi gKsvVg"
       >
         <span
-          class="sc-gKXOVf hgFnUQ"
+          class="sc-gKXOVf AjCai"
         >
           2022
         </span>
