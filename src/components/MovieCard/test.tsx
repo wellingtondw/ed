@@ -7,18 +7,17 @@ import movieMock from './mock';
 const { poster_path, title, release_date, vote_average, id } = movieMock;
 
 type SutProps = {
-  href?: string;
+  to?: string;
   loading?: boolean;
 };
-const sut = ({ href = '/', loading = false }: SutProps) => {
+const sut = ({ to = '/' }: SutProps) => {
   return render(
     <MovieCard
       posterImage={poster_path}
       title={title}
       rating={vote_average}
       date={release_date}
-      href={href}
-      loading={loading}
+      to={to}
     />
   );
 };
@@ -36,19 +35,12 @@ describe('<MovieCard>', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should be able to redirect', () => {
-    const href = `/${id}`;
-    sut({ href });
+  it('should be able to redirect', async () => {
+    const to = `/${id}`;
+    sut({ to });
 
     const movieCardEl = screen.getByRole('link');
 
-    expect(movieCardEl).toHaveAttribute('href', href);
-  });
-
-  it('should be able to render skeleton if loading is true', () => {
-    sut({ loading: true });
-
-    expect(screen.getByTestId('skeleton')).toBeInTheDocument();
-    expect(screen.queryByText(title)).not.toBeInTheDocument();
+    expect(movieCardEl).toHaveAttribute('href', to);
   });
 });
