@@ -1,8 +1,9 @@
 import styled, { css, DefaultTheme, keyframes } from 'styled-components';
 import media from 'styled-media-query';
 import { lighten } from 'polished';
+import { Link } from 'react-router-dom';
 
-export const Wrapper = styled.a`
+export const Wrapper = styled(Link)`
   ${({ theme }) => css`
     width: 100%;
     max-width: 250px;
@@ -108,12 +109,14 @@ const skeletonLoading = (theme: DefaultTheme) => keyframes`
   }
 `;
 
-export const SkeletonWrapper = styled(Wrapper)`
+export const SkeletonWrapper = styled.div`
   ${({ theme }) => css`
     width: 100%;
     max-width: 250px;
     padding-bottom: 340px;
     position: relative;
+    border: 1px solid ${theme.colors.lightGrey};
+
 
     > div:nth-child(1) {
       width: 100%;

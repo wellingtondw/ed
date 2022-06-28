@@ -1,4 +1,6 @@
+import { MovieCardSkeleton } from '../MovieCard/Skeleton';
 import { MovieCard, MovieCardDTO } from '../MovieCard';
+
 import * as S from './styles';
 
 export type MovieCardListDTO = { id: number } & MovieCardDTO;
@@ -11,27 +13,21 @@ type MovieCardListProps = {
 export const MovieCardList = ({ items, loading = false, ...props }: MovieCardListProps) => {
   return (
     <S.Wrapper {...props}>
-      {/* {items.map(({ posterImage, title, rating, date, id }) => {
-        return (
-          <S.Item key={id}>
-            <MovieCard posterImage={posterImage} title={title} rating={rating} date={date} />
-          </S.Item>
-        );
-      })} */}
-
-      {items.map(({ posterImage, title, rating, date, id }) => {
-        return (
-          <S.Item key={id}>
-            <MovieCard
-              loading
-              posterImage={posterImage}
-              title={title}
-              rating={rating}
-              date={date}
-            />
-          </S.Item>
-        );
-      })}
+      {loading
+        ? Array.from({ length: 10 }).map((_, index) => <MovieCardSkeleton key={index} />)
+        : items.map(({ posterImage, title, rating, date, id }) => {
+            return (
+              <S.Item key={id}>
+                <MovieCard
+                  posterImage={posterImage}
+                  title={title}
+                  rating={rating}
+                  date={date}
+                  to={`/movie/${id}`}
+                />
+              </S.Item>
+            );
+          })}
     </S.Wrapper>
   );
 };

@@ -1,8 +1,7 @@
-import { AnchorHTMLAttributes } from 'react';
+import { LinkProps } from 'react-router-dom';
 import { Star } from '@styled-icons/material';
 
 import { getFullYear } from '../../utils/date';
-import { Skeleton } from './Skeleton';
 
 import * as S from './styles';
 
@@ -13,23 +12,9 @@ export type MovieCardDTO = {
   date: string;
 };
 
-export type MovieCardProps = {
-  loading?: boolean;
-} & MovieCardDTO &
-  AnchorHTMLAttributes<HTMLAnchorElement>;
+export type MovieCardProps = MovieCardDTO & LinkProps;
 
-export const MovieCard = ({
-  posterImage,
-  title,
-  rating,
-  date,
-  loading = false,
-  ...props
-}: MovieCardProps) => {
-  if (loading) {
-    return <Skeleton />;
-  }
-
+export const MovieCard = ({ posterImage, title, rating, date, ...props }: MovieCardProps) => {
   return (
     <S.Wrapper {...props}>
       <S.PosterWrapper>
