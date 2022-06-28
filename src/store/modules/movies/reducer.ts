@@ -2,11 +2,13 @@ import { Reducer } from 'redux';
 import { ActionTypes, IMoviesState } from './types';
 
 export const INITIAL_STATE: IMoviesState = {
-  data: {
-    popularMovies: []
-  },
-  loading: false,
-  error: false
+  popularMovies: {
+    data: [],
+    currentPage: 1,
+    loading: false,
+    error: false,
+    totalCount: 0
+  }
 };
 
 const movies: Reducer<IMoviesState> = (state = INITIAL_STATE, action) => {
@@ -14,25 +16,34 @@ const movies: Reducer<IMoviesState> = (state = INITIAL_STATE, action) => {
     case ActionTypes.loading: {
       return {
         ...state,
-        loading: true
+        popularMovies: {
+          ...state.popularMovies,
+          loading: true
+        }
       };
     }
     case ActionTypes.popularMoviesRequestSuccess: {
+      const { results, totalCount, page } = action.payload;
       return {
         ...state,
-        data: {
-          ...state.data,
-          popularMovies: action.payload
-        },
-        loading: false,
-        error: false
+        popularMovies: {
+          ...state.popularMovies,
+          data: results,
+          totalCount,
+          currentPage: page,
+          loading: false,
+          error: false
+        }
       };
     }
     case ActionTypes.popularMoviesRequestFailure: {
       return {
         ...state,
-        error: true,
-        loading: false
+        popularMovies: {
+          ...state.popularMovies,
+          error: true,
+          loading: false
+        }
       };
     }
     default: {

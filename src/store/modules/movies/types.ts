@@ -13,10 +13,17 @@ export type IMoviesDTO = {
   id: number;
 };
 
+export type IMoviesResponseDTO = {
+  total_results: number;
+  results: IMoviesDTO[];
+};
+
 export type IMoviesState = {
-  data: {
-    popularMovies: IMoviesDTO[];
+  popularMovies: {
+    data: IMoviesDTO[];
+    currentPage: number;
+    loading: boolean;
+    error: boolean;
+    totalCount: number;
   };
-  loading: boolean;
-  error: boolean;
 };

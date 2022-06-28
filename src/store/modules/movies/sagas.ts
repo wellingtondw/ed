@@ -8,7 +8,7 @@ import {
   popularMoviesRequestFailure,
   popularMoviesRequestSuccess
 } from './actions';
-import { ActionTypes, IMoviesDTO } from './types';
+import { ActionTypes, IMoviesResponseDTO } from './types';
 
 type PopularMoviesRequest = ReturnType<typeof popularMoviesRequest>;
 
@@ -17,12 +17,20 @@ export function* handleGetPopularMovies({ payload }: PopularMoviesRequest) {
 
   try {
     yield put(loading());
-    const { data }: AxiosResponse<{ results: IMoviesDTO[] }> = yield call(
+    const { data }: AxiosResponse<IMoviesResponseDTO> = yield call(
       api.get,
-      `/movie/popular?api_key=${process.env.API_KEY}&page=${page}`
+      `/movie/popular?api_key=${process.env.API_KEY}&page=${page || 1}`
     );
 
-    yield put(popularMoviesRequestSuccess(data.results));
+    const { results, total_results } = data;
+
+    yield put(
+      popularMoviesRequestSuccess({
+        results,
+        totalCount: total_results,
+        page
+      })
+    );
   } catch (error) {
     yield put(popularMoviesRequestFailure());
   }

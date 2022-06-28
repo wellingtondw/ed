@@ -13,27 +13,28 @@ export const Home = () => {
   const { popularMoviesRequest } = useActions();
   const {
     movies: {
-      data: { popularMovies },
-      loading
+      popularMovies: { data, loading, currentPage, totalCount }
     }
   } = useGlobalState();
 
   useEffect(() => {
-    popularMoviesRequest(1);
+    popularMoviesRequest();
   }, []);
 
   return (
     <>
       <Header />
       <Container>
-        <MovieCardList loading={loading} items={formatMoviesList({ items: popularMovies })} />
+        <MovieCardList loading={loading} items={formatMoviesList({ items: data })} />
 
-        <Pagination
-          totalCount={681893}
-          registerPerPage={20}
-          currentPage={5}
-          onPageChange={() => console.log('Ok')}
-        />
+        {!loading && (
+          <Pagination
+            totalCount={totalCount}
+            registerPerPage={data.length}
+            currentPage={currentPage}
+            onPageChange={(page) => popularMoviesRequest(page)}
+          />
+        )}
       </Container>
     </>
   );
