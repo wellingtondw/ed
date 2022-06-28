@@ -5,7 +5,7 @@ import createSagaMidddleware from 'redux-saga';
 import rootSaga from './modules/rootSaga';
 import rootReducer from './modules/rootReducer';
 
-import { IExampleState } from './modules/example/types';
+import { IMoviesState } from './modules/movies/types';
 
 const sagaMiddleware = createSagaMidddleware();
 
@@ -18,5 +18,5 @@ sagaMiddleware.run(rootSaga);
 export default store;
 
 export interface IState {
-  example: IExampleState;
+  movies: IMoviesState;
 }

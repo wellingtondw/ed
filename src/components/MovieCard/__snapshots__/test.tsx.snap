@@ -12,7 +12,7 @@ exports[`<MovieCard> should be able to render correctly 1`] = `
       <img
         alt="Doutor Estranho no Multiverso da Loucura"
         class="sc-dkzDqf jkElQO"
-        src="https://image.tmdb.org/t/p/w500/boIgXXUhw5O3oVkhXsE6SJZkmYo.jpg"
+        src="/boIgXXUhw5O3oVkhXsE6SJZkmYo.jpg"
       />
     </div>
     <div

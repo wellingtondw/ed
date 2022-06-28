@@ -1,15 +1,17 @@
 import { Reducer } from 'redux';
-import { ActionTypes, IExampleState } from './types';
+import { ActionTypes, IMoviesState } from './types';
 
-export const INITIAL_STATE: IExampleState = {
+export const INITIAL_STATE: IMoviesState = {
   data: {
-    example: ''
+    movies: {
+      popularMovies: []
+    }
   },
   loading: false,
   error: false
 };
 
-const example: Reducer<IExampleState> = (state = INITIAL_STATE, action) => {
+const movies: Reducer<IMoviesState> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ActionTypes.loading: {
       return {
@@ -17,18 +19,20 @@ const example: Reducer<IExampleState> = (state = INITIAL_STATE, action) => {
         loading: true
       };
     }
-    case ActionTypes.exampleRequestSuccess: {
+    case ActionTypes.popularMoviesRequestSuccess: {
       return {
         ...state,
         data: {
           ...state.data,
-          example: action.payload
+          movies: {
+            popularMovies: action.payload
+          }
         },
         loading: false,
         error: false
       };
     }
-    case ActionTypes.exampleRequestFailure: {
+    case ActionTypes.popularMoviesRequestFailure: {
       return {
         ...state,
         error: true,
@@ -40,4 +44,4 @@ const example: Reducer<IExampleState> = (state = INITIAL_STATE, action) => {
     }
   }
 };
-export default example;
+export default movies;
