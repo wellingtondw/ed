@@ -112,18 +112,23 @@ export const SkeletonWrapper = styled(Wrapper)`
   ${({ theme }) => css`
     width: 100%;
     max-width: 250px;
-    height: 435px;
+    padding-bottom: 340px;
+    position: relative;
 
     > div:nth-child(1) {
       width: 100%;
-      height: 372px;
+      height: 85%;
       background-color: ${theme.colors.lightGrey};
       animation: ${skeletonLoading(theme)} 1s linear infinite alternate;
+      position: absolute;
+      top: 0;
     }
 
     > div:nth-child(2) {
       width: 100%;
       padding: ${theme.spacings.xxsmall};
+      position: absolute;
+      bottom: 0;
 
         div:nth-child(1) {
           width: 100%;
@@ -162,10 +167,9 @@ export const SkeletonWrapper = styled(Wrapper)`
 
     ${media.lessThan('medium')`
       max-width: 180px;
-      height: 335px;
-     
+
       > div:nth-child(1) {
-        height: 267px;
+        height: 80%;     
       }
     `}
   `}

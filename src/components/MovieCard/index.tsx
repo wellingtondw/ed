@@ -6,13 +6,17 @@ import { Skeleton } from './Skeleton';
 
 import * as S from './styles';
 
-export type MovieCardProps = {
+export type MovieCardDTO = {
   posterImage: string;
   title: string;
   rating: number;
   date: string;
+};
+
+export type MovieCardProps = {
   loading?: boolean;
-} & AnchorHTMLAttributes<HTMLAnchorElement>;
+} & MovieCardDTO &
+  AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const MovieCard = ({
   posterImage,
