@@ -14,7 +14,11 @@ export const MovieCardList = ({ items, loading = false, ...props }: MovieCardLis
   return (
     <S.Wrapper {...props}>
       {loading
-        ? Array.from({ length: 10 }).map((_, index) => <MovieCardSkeleton key={index} />)
+        ? Array.from({ length: 20 }).map((_, index) => (
+            <S.Item key={index}>
+              <MovieCardSkeleton />
+            </S.Item>
+          ))
         : items.map(({ posterImage, title, rating, date, id }) => {
             return (
               <S.Item key={id}>
