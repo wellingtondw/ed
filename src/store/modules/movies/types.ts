@@ -15,9 +15,7 @@ export type IMoviesDTO = {
 
 export type IMoviesState = {
   data: {
-    movies: {
-      popularMovies: IMoviesDTO[];
-    };
+    popularMovies: IMoviesDTO[];
   };
   loading: boolean;
   error: boolean;

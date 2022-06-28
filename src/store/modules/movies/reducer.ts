@@ -3,9 +3,7 @@ import { ActionTypes, IMoviesState } from './types';
 
 export const INITIAL_STATE: IMoviesState = {
   data: {
-    movies: {
-      popularMovies: []
-    }
+    popularMovies: []
   },
   loading: false,
   error: false
@@ -24,9 +22,7 @@ const movies: Reducer<IMoviesState> = (state = INITIAL_STATE, action) => {
         ...state,
         data: {
           ...state.data,
-          movies: {
-            popularMovies: action.payload
-          }
+          popularMovies: action.payload
         },
         loading: false,
         error: false

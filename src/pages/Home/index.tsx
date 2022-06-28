@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
 import { MovieCardList } from '../../components/MovieCardList';
 import { Header } from '../../components/Header';
@@ -7,28 +6,25 @@ import { Container } from '../../components/Container';
 import { formatMoviesList } from '../../utils/movies';
 import { Pagination } from '../../components/Pagination';
 
-import { IState } from '../../store';
-import { popularMoviesRequest } from '../../store/modules/movies/actions';
-import { IMoviesState } from '../../store/modules/movies/types';
+import { useActions } from '../../hooks/useActions';
+import { useGlobalState } from '../../hooks/useGlobalState';
 
 export const Home = () => {
-  const dispatch = useDispatch();
+  const { popularMoviesRequest } = useActions();
   const {
-    data: {
-      movies: { popularMovies }
-    },
-    loading
-  } = useSelector<IState, IMoviesState>((state) => state.movies);
+    movies: {
+      data: { popularMovies },
+      loading
+    }
+  } = useGlobalState();
 
   useEffect(() => {
-    const pageNumber = 1;
-    dispatch(popularMoviesRequest(pageNumber));
+    popularMoviesRequest(1);
   }, []);
 
   return (
     <>
       <Header />
-
       <Container>
         <MovieCardList loading={loading} items={formatMoviesList({ items: popularMovies })} />
 
