@@ -3,17 +3,27 @@ import * as actions from '../../hooks/useActions';
 
 import { Home } from '.';
 
+const popularMoviesRequest = jest.fn();
+jest.spyOn(actions, 'useActions').mockReturnValue({ popularMoviesRequest } as any);
+
+jest.mock('../../components/Header', () => {
+  return {
+    __esModule: true,
+    Header: function Mock() {
+      return <div data-testid="Mock Header"></div>;
+    }
+  };
+});
+
 const initialStateMock = {
   movies: {
-    popularMovies: { data: [], loading: false, currentPage: 2, totalCount: 200 }
+    popularMovies: { data: [], loading: false, totalCount: 200 }
   }
 };
 
 const sut = (initialState = initialStateMock) => {
   return render(<Home />, initialState);
 };
-const popularMoviesRequest = jest.fn();
-jest.spyOn(actions, 'useActions').mockReturnValue({ popularMoviesRequest });
 
 describe('<Home />', () => {
   afterEach(() => {
@@ -46,6 +56,7 @@ describe('<Home />', () => {
   it('should not be able to render Pagination component if loading', () => {
     sut({
       movies: {
+        ...initialStateMock.movies,
         popularMovies: {
           ...initialStateMock.movies.popularMovies,
           loading: true

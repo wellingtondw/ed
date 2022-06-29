@@ -3,44 +3,56 @@
 exports[`<Header /> Should be able to render correctly 1`] = `
 <div>
   <div
-    class="sc-jSMfEi bKLCrP"
+    class="sc-gKXOVf dLgbJC"
   >
     <div
-      class="sc-bczRLJ dMVYVK"
+      class="sc-iBkjds SHzFk"
     >
       <div
-        class="sc-eCYdqJ bjQUkW"
+        class="sc-gsnTZi fXVKGc"
       >
         <div
-          class="sc-gsnTZi iCYWmp"
+          class="sc-jSMfEi dUBfmM"
         >
           <div
-            class="sc-hKMtZM icSOfc"
+            class="sc-dkzDqf gcYGAC"
           >
-            <svg
-              aria-hidden="true"
-              class="StyledIconBase-ea9ulj-0 lbJwfL"
-              fill="currentColor"
-              focusable="false"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              class="sc-eCYdqJ la-DYnh"
             >
-              <path
-                d="M0 0h24v24H0z"
-                fill="none"
-              />
-              <path
-                d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-              />
-            </svg>
+              <svg
+                aria-hidden="true"
+                class="StyledIconBase-ea9ulj-0 lbJwfL"
+                fill="currentColor"
+                focusable="false"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 0h24v24H0z"
+                  fill="none"
+                />
+                <path
+                  d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                />
+              </svg>
+            </div>
+            <input
+              class="sc-hKMtZM gJnIHa"
+              placeholder="Pesquisar por filme"
+              type="text"
+              value=""
+            />
           </div>
-          <input
-            class="sc-dkzDqf cxbhKF"
-            placeholder="Buscar"
-            type="text"
-            value=""
-          />
         </div>
+        <ul
+          aria-label="search results"
+          class="sc-ftvSup fOpNgm"
+        >
+          <p>
+            Nenhum resultado para a pesquisa
+          </p>
+        </ul>
       </div>
     </div>
   </div>

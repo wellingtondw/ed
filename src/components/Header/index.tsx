@@ -1,16 +1,78 @@
-import { Search } from '@styled-icons/material';
-import { Container } from '../Container';
+import { Link } from 'react-router-dom';
+import { Search, Movie } from '@styled-icons/material';
 
+import { useActions } from '../../hooks/useActions';
+import { useRef, useState } from 'react';
+import { useGlobalState } from '../../hooks/useGlobalState';
+import { useClickOutside } from '../../hooks/useClickOutside';
+import { useDebounce } from '../../hooks/useDebounce';
+import { formatMoviesList } from '../../utils/movies';
+
+import { Spinner } from '../../components/Spinner';
+import { Container } from '../Container';
 import { Input } from '../Input';
 
 import * as S from './styles';
 
 export const Header = () => {
+  const searchResultsRef = useRef(null);
+  const [openSearch, setOpenSearch] = useState(false);
+  const { searchMoviesRequest } = useActions();
+  const {
+    movies: {
+      search: { data, loading }
+    }
+  } = useGlobalState();
+  const searchNotFound = data.length < 1;
+
+  const debouncedSearchMoviesRequest = useDebounce(
+    (value: string) => searchMoviesRequest({ query: value }),
+    500
+  );
+
+  const handleSearch = (value: string) => {
+    if (value.length > 0) {
+      setOpenSearch(true);
+      return debouncedSearchMoviesRequest(value);
+    }
+
+    setOpenSearch(false);
+  };
+
+  useClickOutside({ ref: searchResultsRef, callback: () => setOpenSearch(false) });
   return (
     <S.Wrapper>
-      <Container>
-        <Input placeholder="Buscar" icon={<Search />} iconPosition="right" />
-      </Container>
+      <S.SearchWrapper ref={searchResultsRef}>
+        <Container>
+          <Input
+            placeholder="Pesquisar por filme"
+            icon={<Search />}
+            iconPosition="right"
+            onInputChange={handleSearch}
+          />
+
+          <S.SearchResults
+            aria-label="search results"
+            isOpen={openSearch}
+            isLoading={loading}
+            notFound={!!searchNotFound}>
+            {loading ? (
+              <Spinner aria-label="carregando" />
+            ) : searchNotFound ? (
+              <p>Nenhum resultado para a pesquisa</p>
+            ) : (
+              formatMoviesList({ items: data }).map((movie) => {
+                return (
+                  <Link to={`/movie/${movie.id}`} key={movie.id}>
+                    <Movie width={20} height={20} />
+                    <span>{movie.title}</span>
+                  </Link>
+                );
+              })
+            )}
+          </S.SearchResults>
+        </Container>
+      </S.SearchWrapper>
     </S.Wrapper>
   );
 };
