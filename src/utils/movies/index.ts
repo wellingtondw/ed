@@ -1,15 +1,8 @@
 import { MovieCardListDTO } from 'components/MovieCardList';
-
-export type MoviesDTO = {
-  poster_path: string;
-  title: string;
-  release_date: string;
-  vote_average: number;
-  id: number;
-};
+import { IMoviesDTO } from 'store/modules/movies/types';
 
 type FormatMoviesListParams = {
-  items: MoviesDTO[];
+  items: IMoviesDTO[];
 };
 
 export const formatMoviesList = ({ items }: FormatMoviesListParams) => {
@@ -17,7 +10,7 @@ export const formatMoviesList = ({ items }: FormatMoviesListParams) => {
     const { poster_path, title, release_date, vote_average, id } = item;
 
     return {
-      posterImage: poster_path,
+      posterImage: `${process.env.IMAGES_ENDPOINT_URL}${poster_path}`,
       title,
       date: release_date,
       rating: vote_average,

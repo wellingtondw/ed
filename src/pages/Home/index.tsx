@@ -1,24 +1,40 @@
+import { useEffect } from 'react';
+
 import { MovieCardList } from '../../components/MovieCardList';
 import { Header } from '../../components/Header';
-import movieCardListMock from '../../components/MovieCardList/mock';
 import { Container } from '../../components/Container';
 import { formatMoviesList } from '../../utils/movies';
 import { Pagination } from '../../components/Pagination';
 
+import { useActions } from '../../hooks/useActions';
+import { useGlobalState } from '../../hooks/useGlobalState';
+
 export const Home = () => {
+  const { popularMoviesRequest } = useActions();
+  const {
+    movies: {
+      popularMovies: { data, loading, currentPage, totalCount }
+    }
+  } = useGlobalState();
+
+  useEffect(() => {
+    popularMoviesRequest();
+  }, []);
+
   return (
     <>
       <Header />
-
       <Container>
-        <MovieCardList items={formatMoviesList({ items: movieCardListMock })} />
+        <MovieCardList loading={loading} items={formatMoviesList({ items: data })} />
 
-        <Pagination
-          totalCount={681893}
-          registerPerPage={20}
-          currentPage={5}
-          onPageChange={() => console.log('Ok')}
-        />
+        {!loading && (
+          <Pagination
+            totalCount={totalCount}
+            registerPerPage={data.length}
+            currentPage={currentPage}
+            onPageChange={(page) => popularMoviesRequest(page)}
+          />
+        )}
       </Container>
     </>
   );
