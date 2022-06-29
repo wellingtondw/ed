@@ -8,12 +8,17 @@ export const INITIAL_STATE: IMoviesState = {
     loading: false,
     error: false,
     totalCount: 0
+  },
+  search: {
+    data: [],
+    loading: false,
+    error: false
   }
 };
 
 const movies: Reducer<IMoviesState> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ActionTypes.loading: {
+    case ActionTypes.loadingPopularMovies: {
       return {
         ...state,
         popularMovies: {
@@ -41,6 +46,37 @@ const movies: Reducer<IMoviesState> = (state = INITIAL_STATE, action) => {
         ...state,
         popularMovies: {
           ...state.popularMovies,
+          error: true,
+          loading: false
+        }
+      };
+    }
+    case ActionTypes.loadingSearchMovies: {
+      return {
+        ...state,
+        search: {
+          ...state.search,
+          loading: true
+        }
+      };
+    }
+    case ActionTypes.searchMoviesRequestSuccess: {
+      const { results } = action.payload;
+      return {
+        ...state,
+        search: {
+          ...state.search,
+          data: results,
+          loading: false,
+          error: false
+        }
+      };
+    }
+    case ActionTypes.searchMoviesRequestFailure: {
+      return {
+        ...state,
+        search: {
+          ...state.search,
           error: true,
           loading: false
         }

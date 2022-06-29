@@ -3,23 +3,30 @@ import { all, takeLatest, call, put } from 'redux-saga/effects';
 import api from '../../../services/api';
 
 import {
-  loading,
+  loadingPopularMovies,
   popularMoviesRequest,
   popularMoviesRequestFailure,
-  popularMoviesRequestSuccess
+  popularMoviesRequestSuccess,
+  loadingSearchMovies,
+  searchMoviesRequest,
+  searchMoviesRequestSuccess,
+  searchMoviesRequestFailure
 } from './actions';
 import { ActionTypes, IMoviesResponseDTO } from './types';
 
 type PopularMoviesRequest = ReturnType<typeof popularMoviesRequest>;
+type SearchMoviesRequest = ReturnType<typeof searchMoviesRequest>;
+
+const language = 'pt-BR';
 
 export function* handleGetPopularMovies({ payload }: PopularMoviesRequest) {
   const { page } = payload;
 
   try {
-    yield put(loading());
+    yield put(loadingPopularMovies());
     const { data }: AxiosResponse<IMoviesResponseDTO> = yield call(
       api.get,
-      `/movie/popular?api_key=${process.env.API_KEY}&page=${page || 1}`
+      `/movie/popular?api_key=${process.env.API_KEY}&page=${page || 1}&language=${language}`
     );
 
     const { results, total_results } = data;
@@ -36,4 +43,29 @@ export function* handleGetPopularMovies({ payload }: PopularMoviesRequest) {
   }
 }
 
-export default all([takeLatest(ActionTypes.popularMoviesRequest, handleGetPopularMovies)]);
+export function* handleSearchMovies({ payload }: SearchMoviesRequest) {
+  const { query } = payload;
+
+  try {
+    yield put(loadingSearchMovies());
+    const { data }: AxiosResponse<IMoviesResponseDTO> = yield call(
+      api.get,
+      `/search/movie?api_key=${process.env.API_KEY}&query=${query}&language=${language}`
+    );
+
+    const { results } = data;
+
+    yield put(
+      searchMoviesRequestSuccess({
+        results
+      })
+    );
+  } catch (error) {
+    yield put(searchMoviesRequestFailure());
+  }
+}
+
+export default all([
+  takeLatest(ActionTypes.popularMoviesRequest, handleGetPopularMovies),
+  takeLatest(ActionTypes.searchMoviesRequest, handleSearchMovies)
+]);

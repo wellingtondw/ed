@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { MovieCardList } from '../../components/MovieCardList';
 import { Header } from '../../components/Header';
@@ -13,13 +14,22 @@ export const Home = () => {
   const { popularMoviesRequest } = useActions();
   const {
     movies: {
-      popularMovies: { data, loading, currentPage, totalCount }
+      popularMovies: { data, loading, totalCount, currentPage }
     }
   } = useGlobalState();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = Number(searchParams.get('page')) || 1;
 
   useEffect(() => {
-    popularMoviesRequest();
+    setSearchParams({ page: String(currentPage) });
+
+    popularMoviesRequest(page);
   }, []);
+
+  const handlePageChange = (page: number) => {
+    setSearchParams({ page: String(page) });
+    return popularMoviesRequest(page);
+  };
 
   return (
     <>
@@ -31,8 +41,8 @@ export const Home = () => {
           <Pagination
             totalCount={totalCount}
             registerPerPage={data.length}
-            currentPage={currentPage}
-            onPageChange={(page) => popularMoviesRequest(page)}
+            currentPage={page}
+            onPageChange={(page) => handlePageChange(page)}
           />
         )}
       </Container>
