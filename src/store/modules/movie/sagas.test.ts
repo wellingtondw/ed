@@ -17,21 +17,6 @@ const movieId = '1';
 const language = 'pt-BR';
 
 describe('MovieSagas', () => {
-  it('should be able to loading fetch movie details', () => {
-    return expectSaga(() => handleGetMovieDetails(movieDetailsRequest(movieId)))
-      .withReducer(reducer)
-      .put(loadingMovieDetails())
-      .hasFinalState({
-        ...initialState,
-        details: {
-          ...initialState.details,
-          loading: true,
-          error: false
-        }
-      })
-      .run();
-  });
-
   it('should be able to fetch movie details', () => {
     const fakeMovieDetails: IMovieDetailDTO = {
       id: 1,
