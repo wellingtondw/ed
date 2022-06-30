@@ -1,42 +1,161 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<MovieCard> should be able to render correctly 1`] = `
+.c8 {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.c0 {
+  width: 100%;
+  max-width: 250px;
+  border: 1px solid #EEE;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  display: block;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover img {
+  -webkit-transform: scale3d(1.05,1.05,1.05);
+  -ms-transform: scale3d(1.05,1.05,1.05);
+  transform: scale3d(1.05,1.05,1.05);
+}
+
+.c1 {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  -webkit-transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+}
+
+.c3 {
+  width: 100%;
+  padding: 0.8rem;
+}
+
+.c4 {
+  font-size: 1.6rem;
+  color: #29292E;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.c6 {
+  color: #835AFD;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #835AFD;
+  border-radius: 0.4rem;
+  padding: 2px 4px;
+  color: #FFFFFF;
+}
+
+.c7 svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 2px;
+}
+
+.c7 span {
+  font-size: 1.2rem;
+}
+
+@media (max-width:768px) {
+  .c0 {
+    max-width: 180px;
+  }
+}
+
+@media (max-width:768px) {
+  .c4 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width:768px) {
+  .c6 {
+    font-size: 1.2rem;
+  }
+}
+
 <div>
   <a
-    class="sc-bczRLJ MaScp"
+    class="c0"
     href="/"
   >
     <div
-      class="sc-gsnTZi icutPt"
+      class="c1"
     >
       <img
         alt="Doutor Estranho no Multiverso da Loucura"
-        class="sc-dkzDqf jkElQO"
+        class="c2"
+        loading="lazy"
         src="/boIgXXUhw5O3oVkhXsE6SJZkmYo.jpg"
       />
     </div>
     <div
-      class="sc-hKMtZM dglSdK"
+      class="c3"
     >
       <h2
-        class="sc-eCYdqJ iwHsWs"
+        class="c4"
       >
         Doutor Estranho no Multiverso da Loucura
       </h2>
       <div
-        class="sc-jSMfEi gKsvVg"
+        class="c5"
       >
         <span
-          class="sc-gKXOVf AjCai"
+          class="c6"
         >
           2022
         </span>
         <div
-          class="sc-iBkjds haKhin"
+          class="c7"
         >
           <svg
             aria-hidden="true"
-            class="StyledIconBase-ea9ulj-0 lbJwfL"
+            class="c8"
             fill="currentColor"
             focusable="false"
             viewBox="0 0 24 24"

@@ -1,4 +1,4 @@
-import { render, screen, waitFor, fireEvent } from 'utils/test-utils';
+import { render, screen, waitFor } from 'utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import * as actions from '../../hooks/useActions';
 
@@ -18,12 +18,6 @@ const searchMoviesRequest = jest.fn();
 jest.spyOn(actions, 'useActions').mockReturnValue({ searchMoviesRequest } as any);
 
 describe('<Header />', () => {
-  it('Should be able to render correctly', () => {
-    const { container } = sut();
-
-    expect(container).toMatchSnapshot();
-  });
-
   it('should be able to show loading spinner on search', () => {
     const state = {
       movies: {

@@ -53,7 +53,7 @@ export const SearchResults = styled.ul<SearchResultsProps>`
     height: 355px;
     background-color: ${theme.colors.white};
     overflow-y: auto;
-    z-index: ${theme.layers.menu};
+    z-index: ${theme.layers.modal};
     position: absolute;
     left: 50%;
     transform: translateX(-50%);

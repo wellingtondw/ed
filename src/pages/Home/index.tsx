@@ -10,6 +10,8 @@ import { Pagination } from '../../components/Pagination';
 import { useActions } from '../../hooks/useActions';
 import { useGlobalState } from '../../hooks/useGlobalState';
 
+import * as S from './styles';
+
 export const Home = () => {
   const { popularMoviesRequest } = useActions();
   const {
@@ -35,16 +37,21 @@ export const Home = () => {
     <>
       <Header />
       <Container>
-        <MovieCardList loading={loading} items={formatMoviesList({ items: data })} />
+        <S.Wrapper>
+          <S.Heading>Filmes Populares</S.Heading>
+          <MovieCardList loading={loading} items={formatMoviesList({ items: data })} />
 
-        {!loading && (
-          <Pagination
-            totalCount={totalCount}
-            registerPerPage={data.length}
-            currentPage={page}
-            onPageChange={(page) => handlePageChange(page)}
-          />
-        )}
+          {!loading && (
+            <S.PaginationWrapper>
+              <Pagination
+                totalCount={totalCount}
+                registerPerPage={data.length}
+                currentPage={page}
+                onPageChange={(page) => handlePageChange(page)}
+              />
+            </S.PaginationWrapper>
+          )}
+        </S.Wrapper>
       </Container>
     </>
   );

@@ -35,8 +35,6 @@ export const Header = () => {
       setOpenSearch(true);
       return debouncedSearchMoviesRequest(value);
     }
-
-    setOpenSearch(false);
   };
 
   useClickOutside({ ref: searchResultsRef, callback: () => setOpenSearch(false) });
@@ -63,7 +61,10 @@ export const Header = () => {
             ) : (
               formatMoviesList({ items: data }).map((movie) => {
                 return (
-                  <Link to={`/movie/${movie.id}`} key={movie.id}>
+                  <Link
+                    to={`/movie/${movie.id}`}
+                    onClick={() => setOpenSearch(false)}
+                    key={movie.id}>
                     <Movie width={20} height={20} />
                     <span>{movie.title}</span>
                   </Link>

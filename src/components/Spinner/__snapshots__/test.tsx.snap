@@ -1,9 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Spinner /> should be able to render correctly 1`] = `
+.c0 {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 13px;
+}
+
+.c0 div {
+  position: absolute;
+  top: 0px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #835AFD;
+  -webkit-animation-timing-function: cubic-bezier(0,1,1,0);
+  animation-timing-function: cubic-bezier(0,1,1,0);
+}
+
+.c0 div:nth-child(1) {
+  left: 8px;
+  -webkit-animation: dTWfpt 0.6s infinite;
+  animation: dTWfpt 0.6s infinite;
+}
+
+.c0 div:nth-child(2) {
+  left: 8px;
+  -webkit-animation: BVSOq 0.6s infinite;
+  animation: BVSOq 0.6s infinite;
+}
+
+.c0 div:nth-child(3) {
+  left: 32px;
+  -webkit-animation: BVSOq 0.6s infinite;
+  animation: BVSOq 0.6s infinite;
+}
+
+.c0 div:nth-child(4) {
+  left: 56px;
+  -webkit-animation: ceDJoN 0.6s infinite;
+  animation: ceDJoN 0.6s infinite;
+}
+
 <div>
   <div
-    class="sc-bczRLJ fXRvoU"
+    class="c0"
   >
     <div />
     <div />
