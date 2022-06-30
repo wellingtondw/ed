@@ -26,7 +26,7 @@ export function* handleGetPopularMovies({ payload }: PopularMoviesRequest) {
     yield put(loadingPopularMovies());
     const { data }: AxiosResponse<IMoviesResponseDTO> = yield call(
       api.get,
-      `/movie/popular?api_key=${process.env.API_KEY}&page=${page || 1}&language=${language}`
+      `/movie/popular?api_key=${process.env.API_KEY}&page=${page}&language=${language}`
     );
 
     const { results, total_results } = data;
