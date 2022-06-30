@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heading /> should render correctly 1`] = `
+.c0 {
+  color: #29292E;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 3.2rem;
+}
+
+<div>
+  <h2
+    class="c0"
+  >
+    Title Example
+  </h2>
+</div>
+`;

@@ -18,7 +18,7 @@ export const MovieCard = ({ posterImage, title, rating, date, ...props }: MovieC
   return (
     <S.Wrapper {...props}>
       <S.PosterWrapper>
-        <S.Poster src={posterImage} alt={title} />
+        <S.Poster src={posterImage} alt={title} loading="lazy" />
       </S.PosterWrapper>
 
       <S.ContentWrapper>

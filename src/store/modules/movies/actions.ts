@@ -61,7 +61,3 @@ export const searchMoviesRequestSuccess = ({ results }: SearchMoviesRequestSucce
 export const searchMoviesRequestFailure = () => ({
   type: ActionTypes.searchMoviesRequestFailure
 });
-
-export const resetMoviesSearch = () => ({
-  type: ActionTypes.resetMoviesSearch
-});

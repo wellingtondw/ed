@@ -7,8 +7,7 @@ export enum ActionTypes {
   loadingSearchMovies = 'LOADING_SEARCH_MOVIES',
   searchMoviesRequest = 'SEARCH_MOVIES_REQUEST',
   searchMoviesRequestSuccess = 'SEARCH_MOVIES_REQUEST_SUCCESS',
-  searchMoviesRequestFailure = 'SEARCH_MOVIES_REQUEST_FAILURE',
-  resetMoviesSearch = 'RESET_MOVIES_SEARCH'
+  searchMoviesRequestFailure = 'SEARCH_MOVIES_REQUEST_FAILURE'
 }
 
 export type IMoviesDTO = {
