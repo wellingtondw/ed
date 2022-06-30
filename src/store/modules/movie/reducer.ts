@@ -24,7 +24,8 @@ const movies: Reducer<IMovieState> = (state = INITIAL_STATE, action) => {
         ...state,
         details: {
           ...state.details,
-          loading: true
+          loading: true,
+          error: false
         }
       };
     }

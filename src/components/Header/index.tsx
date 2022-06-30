@@ -2,10 +2,12 @@ import { Link } from 'react-router-dom';
 import { Search, Movie } from '@styled-icons/material';
 
 import { useActions } from '../../hooks/useActions';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useGlobalState } from '../../hooks/useGlobalState';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useDebounce } from '../../hooks/useDebounce';
+import { useToast } from '../../hooks/useToast';
+
 import { formatMoviesList } from '../../utils/movies';
 
 import { Spinner } from '../../components/Spinner';
@@ -20,10 +22,16 @@ export const Header = () => {
   const { searchMoviesRequest } = useActions();
   const {
     movies: {
-      search: { data, loading }
+      search: { data, loading, error }
     }
   } = useGlobalState();
   const searchNotFound = data.length < 1;
+
+  useEffect(() => {
+    if (error) {
+      useToast({ message: 'Ops, algo deu errado!' });
+    }
+  }, [error]);
 
   const debouncedSearchMoviesRequest = useDebounce(
     (value: string) => searchMoviesRequest({ query: value }),
