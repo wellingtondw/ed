@@ -42,7 +42,7 @@ export const MovieDetails = () => {
         <Container>
           {loading ? (
             <S.Loading>
-              <Spinner />
+              <Spinner aria-label="carregando" />
             </S.Loading>
           ) : (
             <>
