@@ -7,6 +7,7 @@ import { Container } from '../../components/Container';
 import { formatMoviesList } from '../../utils/movies';
 import { Pagination } from '../../components/Pagination';
 
+import { useToast } from '../../hooks/useToast';
 import { useActions } from '../../hooks/useActions';
 import { useGlobalState } from '../../hooks/useGlobalState';
 
@@ -16,7 +17,7 @@ export const Home = () => {
   const { popularMoviesRequest } = useActions();
   const {
     movies: {
-      popularMovies: { data, loading, totalCount, currentPage }
+      popularMovies: { data, loading, totalCount, currentPage, error }
     }
   } = useGlobalState();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,7 +27,14 @@ export const Home = () => {
     setSearchParams({ page: String(page) });
 
     popularMoviesRequest(page);
-  }, []);
+  }, [page]);
+
+  useEffect(() => {
+    if (error) {
+      setSearchParams({ page: String(currentPage) });
+      useToast({ message: 'Ops, algo deu errado!' });
+    }
+  }, [error]);
 
   const handlePageChange = (page: number) => {
     setSearchParams({ page: String(page) });

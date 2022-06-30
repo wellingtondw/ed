@@ -1,6 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
+import { ToastContainer } from 'react-toastify';
 
 import { Routes } from './routes';
 import GlobalStyles from './styles/global';
@@ -17,6 +18,7 @@ export const App = () => {
         </Provider>
       </BrowserRouter>
       <GlobalStyles />
+      <ToastContainer />
     </ThemeProvider>
   );
 };

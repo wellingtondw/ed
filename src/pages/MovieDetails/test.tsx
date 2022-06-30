@@ -4,12 +4,21 @@ import * as actions from '../../hooks/useActions';
 import { MovieDetails } from '.';
 
 const mockId = '186412d848g12d64712748176';
+const mockNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: () => ({
     id: mockId
-  })
+  }),
+  useNavigate: () => mockNavigate
 }));
+
+const mockToast = jest.fn();
+jest.mock('../../hooks/useToast', () => {
+  return {
+    useToast: () => mockToast()
+  };
+});
 
 const initialStateMock = {
   movie: {
@@ -122,5 +131,22 @@ describe('<MovieDetails />', () => {
     sut(initialState as any);
 
     expect(screen.getByText(name)).toBeInTheDocument();
+  });
+
+  it('should be able to handle fetch movie details error', () => {
+    const initialState = {
+      movie: {
+        details: {
+          ...initialStateMock.movie.details,
+          error: true
+        }
+      }
+    };
+
+    sut(initialState as any);
+
+    expect(mockToast).toHaveBeenCalledTimes(1);
+    expect(mockNavigate).toHaveBeenCalledTimes(1);
+    expect(mockNavigate).toHaveBeenCalledWith('/');
   });
 });

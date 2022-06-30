@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { useActions } from '../../hooks/useActions';
 
@@ -8,6 +8,8 @@ import { Container } from '../../components/Container';
 
 import * as S from './styles';
 import { useGlobalState } from '../../hooks/useGlobalState';
+import { useToast } from '../../hooks/useToast';
+
 import { Spinner } from '../../components/Spinner';
 
 type ParamsProps = {
@@ -18,14 +20,22 @@ export const MovieDetails = () => {
   const { movieDetailsRequest } = useActions();
   const {
     movie: {
-      details: { data, loading }
+      details: { data, loading, error }
     }
   } = useGlobalState();
   const { id } = useParams<ParamsProps>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     movieDetailsRequest(id!);
   }, [id]);
+
+  useEffect(() => {
+    if (error) {
+      useToast({ message: 'Ops, algo deu errado!' });
+      navigate('/');
+    }
+  }, [error]);
 
   const { poster_path, title, overview, genres, vote_average, production_companies } = data;
   const haveGenres = genres.length > 0;

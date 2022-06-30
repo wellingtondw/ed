@@ -23,7 +23,8 @@ const movies: Reducer<IMoviesState> = (state = INITIAL_STATE, action) => {
         ...state,
         popularMovies: {
           ...state.popularMovies,
-          loading: true
+          loading: true,
+          error: false
         }
       };
     }
@@ -56,7 +57,8 @@ const movies: Reducer<IMoviesState> = (state = INITIAL_STATE, action) => {
         ...state,
         search: {
           ...state.search,
-          loading: true
+          loading: true,
+          error: false
         }
       };
     }

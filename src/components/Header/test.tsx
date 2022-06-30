@@ -4,6 +4,13 @@ import * as actions from '../../hooks/useActions';
 
 import { Header } from '.';
 
+const mockToast = jest.fn();
+jest.mock('../../hooks/useToast', () => {
+  return {
+    useToast: () => mockToast()
+  };
+});
+
 const initialStateMock = {
   movies: {
     search: { data: [], loading: false }
@@ -81,5 +88,20 @@ describe('<Header />', () => {
 
     expect(screen.getByLabelText('search results')).toBeInTheDocument();
     expect(screen.getByLabelText('search results')).toHaveStyle({ opacity: 0 });
+  });
+
+  it('should be able to handle search results errors', () => {
+    const state = {
+      movies: {
+        search: {
+          ...initialStateMock.movies.search,
+          error: true
+        }
+      }
+    };
+
+    sut(state as any);
+
+    expect(mockToast).toHaveBeenCalledTimes(1);
   });
 });
