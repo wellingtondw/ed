@@ -8,12 +8,9 @@ export const INITIAL_STATE: IMovieState = {
       id: null,
       overview: '',
       poster_path: '',
-      backdrop_path: '',
-      release_date: '',
       production_companies: [],
       title: '',
-      vote_average: 0,
-      vote_count: 0
+      vote_average: 0
     },
     loading: false,
     error: false

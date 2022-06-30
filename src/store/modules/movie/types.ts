@@ -11,15 +11,10 @@ export type IMovieDetailDTO = {
   genres: { id: number; name: string }[];
   overview: string;
   vote_average: number;
-  vote_count: number;
   poster_path: string;
-  backdrop_path: string;
-  release_date: string;
   production_companies: {
     id: number;
-    logo_path: string;
     name: string;
-    origin_country: string;
   }[];
 };
 
