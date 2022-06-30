@@ -7,6 +7,7 @@ export const Wrapper = styled.ul`
   ${({ theme }) => css`
     display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
     width: 100%;
     gap: ${theme.spacings.xxsmall};
   `}
@@ -15,6 +16,8 @@ export const Wrapper = styled.ul`
 export const Item = styled.li`
   width: calc(20% - 16px);
   list-style: none;
+  display: flex;
+  align-items: flex-end;
 
   ${MovieCardWrapper} {
     max-width: 100%;

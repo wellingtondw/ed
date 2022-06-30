@@ -109,6 +109,10 @@ exports[`<MovieCardList /> should be able to render correctly 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   width: 100%;
   gap: 0.8rem;
 }
@@ -116,6 +120,14 @@ exports[`<MovieCardList /> should be able to render correctly 1`] = `
 .c1 {
   width: calc(20% - 16px);
   list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .c1 .c2 {

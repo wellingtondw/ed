@@ -5,7 +5,7 @@ export const loadingPopularMovies = () => ({
   type: ActionTypes.loadingPopularMovies
 });
 
-export const popularMoviesRequest = (page?: number) => ({
+export const popularMoviesRequest = (page: number) => ({
   type: ActionTypes.popularMoviesRequest,
   payload: { page }
 });

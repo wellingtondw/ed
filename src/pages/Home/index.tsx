@@ -20,10 +20,10 @@ export const Home = () => {
     }
   } = useGlobalState();
   const [searchParams, setSearchParams] = useSearchParams();
-  const page = Number(searchParams.get('page')) || 1;
+  const page = Number(searchParams.get('page')) || currentPage;
 
   useEffect(() => {
-    setSearchParams({ page: String(currentPage) });
+    setSearchParams({ page: String(page) });
 
     popularMoviesRequest(page);
   }, []);
