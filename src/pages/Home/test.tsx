@@ -15,6 +15,19 @@ jest.mock('../../components/Header', () => {
   };
 });
 
+const mockSetSearchParams = jest.fn();
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useSearchParams: () => [{ get: jest.fn() }, mockSetSearchParams]
+}));
+
+const mockToast = jest.fn();
+jest.mock('../../hooks/useToast', () => {
+  return {
+    useToast: () => mockToast()
+  };
+});
+
 const initialStateMock = {
   movies: {
     popularMovies: { data: [], loading: false, totalCount: 200 }
@@ -65,5 +78,22 @@ describe('<Home />', () => {
     });
 
     expect(screen.queryByRole('button', { name: '1' })).not.toBeInTheDocument();
+  });
+
+  it('should be able to handle fetch popular movies error', () => {
+    const currentPage = 10;
+    sut({
+      movies: {
+        ...initialStateMock.movies,
+        popularMovies: {
+          ...initialStateMock.movies.popularMovies,
+          error: true,
+          currentPage
+        }
+      } as any
+    });
+
+    expect(mockToast).toHaveBeenCalledTimes(1);
+    expect(mockSetSearchParams).toHaveBeenCalledWith({ page: String(currentPage) });
   });
 });
